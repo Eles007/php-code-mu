@@ -69,3 +69,13 @@ echo '30.1: '.strlen($str1)."<br>";
 //Практика 31.1
 $str1 = 'Здравствуйте';
 echo '31.1: '.mb_strlen($str1)."<br>";
+//Практика 32.1
+ echo '32.1: '.'<i>Программист - лучшая профессия!</i>'."<br>";
+ //Практика 32.2
+echo '32.2: '.'<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9'.'<br>';
+//Практика 33.1
+echo '33.1: '.'<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLjsszBhTBpRpAsQX6n2oVmreBLg4MBQUjgA&s">'.'<br>';
+//Практика 33.2
+echo '33.2: '.'<input value="Какой-то текст">'.'<br>';
+//Практика 33.3
+echo '33.3: '.'<textarea>Какой-то текст</textarea>'.'<br>';
