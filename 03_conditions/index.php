@@ -90,3 +90,90 @@ echo match($num) {
     default => 'Ошибка: Нет такого сезона!'
 };
 echo "<br>";
+//Практика 101
+$num = 4;
+echo '101: ';
+$res = ($num >= 0) ? 1 : -1;
+echo $res;
+echo "<br>";
+//Практика 102
+$user = ['name' => 'john', 'age' => 30];
+echo '102: ';
+$name = $user['name'] ?? 'unknown';
+echo $name;
+echo "<br>";
+//Практика 103
+$res = $user['name'] ?? $user['age'] ?? 'empty';
+//Практика 105
+echo '105: ';
+$min = 10;
+
+if ($min >= 0 and $min <= 20) {
+    echo '1 quarter';
+}
+
+if ($min >= 21 and $min <= 40) {
+    echo '2 quarter';
+}
+
+if ($min >= 41 and $min <= 60) {
+    echo '3 quarter';
+}
+echo "<br>";
+//Практика 106
+echo '106: ';
+$arr = [1,2,3];
+if(count($arr) == 3){
+    echo $arr[0] + $arr[1] + $arr[2];
+}
+echo "<br>";
+//Практика 107
+echo '107: ';
+$str = '1230';
+var_dump ($str[-1] === '0');
+echo "<br>";
+//Практика 108.1
+$num = 100;
+echo '108.1: ';
+echo ($num % 2 === 0) ? 'четное' : 'нечетное';
+echo "<br>";
+//Практика 108.2
+echo '108.2: ';
+var_dump ($num % 3 === 0);
+echo "<br>";
+//Практика 110.1
+echo '110.1: ';
+$month = 5;
+if( $month === 12 or (1 <= $month and  $month <= 2) ){
+    echo 'Зима';
+} elseif( 3 <= $month and  $month <= 5 ){
+    echo 'Весна';
+} elseif( 6 <= $month and  $month <= 8 ){
+    echo 'Лето';
+} elseif( 9 <= $month and  $month <= 11 ){
+    echo 'Осень';
+}
+echo "<br>";
+//Практика 110.2
+echo '110.2: ';
+$str = 'abcde';
+var_dump($str[0] === 'a');
+echo "<br>";
+//Практика 110.3
+echo '110.3: ';
+$num = 12345;
+$num0 = (int) ($num / 10000);
+var_dump($num0 === 1 or $num0 === 2 or $num0 === 3);
+echo "<br>";
+//Практика 110.4
+echo '110.4: ';
+$num = 123;
+$str = (string) $num;
+echo $str[0] + $str[1] + $str[2];
+echo "<br>";
+//Практика 110.5
+echo '110.5: ';
+$num = 123123;
+$str = (string) $num;
+var_dump($str[0] + $str[1] + $str[2] === $str[3] + $str[4] + $str[5]);
+echo "<br>";
