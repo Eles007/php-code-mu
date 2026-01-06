@@ -12,6 +12,7 @@
     <li><a href="01_basics/index.php">01.Основы</a></li>
     <li><a href="02_arrays/index.php">02.Массивы</a></li>
     <li><a href="03_conditions/index.php">03.Условия</a></li>
+    <li><a href="04_loop/index.php">04.Циклы</a></li>
 </ul>
 
 </body>
