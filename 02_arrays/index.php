@@ -1,4 +1,5 @@
 <?php
+
 echo "<a href='../'><h1>Главная страница</h1></a>";
 //Практика 54.1
 $a = ['a', 'b', 'c'];
@@ -13,17 +14,17 @@ $arr = ['a', 'b', 'c', 'd', 'e'];
 echo "55.2: $arr[0] + $arr[1] + $arr[2] + $arr[3] <br>";
 //Практика 55.3
 $arr = [1, 2, 3, 4, 5];
-echo '55.3: '. ($arr[0] + $arr[1] + $arr[2] + $arr[3] + $arr[4]) ."<br>";
+echo '55.3: ' . ($arr[0] + $arr[1] + $arr[2] + $arr[3] + $arr[4]) . "<br>";
 //Практика 55.4
 $arr = [2, 5, 3, 9];
-echo '55.4: '. ($arr[0] * $arr[1] + $arr[2] * $arr[3] ) ."<br>";
+echo '55.4: ' . ($arr[0] * $arr[1] + $arr[2] * $arr[3]) . "<br>";
 //Практика 56.1
 $user = [
     'name' => 'Алексей',
     'surname' => 'Алексеев',
     'patronymic' => 'Алексеевич',
 ];
-echo '56.1: '.$user['name']." ".$user['surname']." ".$user['patronymic']."<br>";
+echo '56.1: ' . $user['name'] . " " . $user['surname'] . " " . $user['patronymic'] . "<br>";
 //Практика 56.2
 $week = [
     1 => 'Понедельник',
@@ -57,10 +58,10 @@ var_dump($month);
 echo "<br>";
 //Практика 59.1
 $arr = ['a', 'b', 'c', 'd', 'e'];
-echo '59.1: '. count($arr) ."<br>";
+echo '59.1: ' . count($arr) . "<br>";
 //Практика 59.2
 $arr = ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4];
-echo '59.2: '. count($arr) ."<br>";
+echo '59.2: ' . count($arr) . "<br>";
 //Практика 60.1
 $arr = ['a' => 1, 'b' => 2, 'c' => 3];
 echo '60.1: ';
@@ -80,22 +81,22 @@ echo "<br>";
 //Практика 63.1
 $arr = [];
 echo '63.1: ';
-$arr[ ] = 1;
-$arr[ ] = 2;
-$arr[ ] = 3;
-$arr[ ] = 4;
-$arr[ ] = 5;
+$arr[] = 1;
+$arr[] = 2;
+$arr[] = 3;
+$arr[] = 4;
+$arr[] = 5;
 var_dump($arr);
 echo "<br>";
 //Практика 63.2
 $arr = [1, 2, 3];
 echo '63.2: ';
-$arr[ ] = 4;
-$arr[ ] = 5;
+$arr[] = 4;
+$arr[] = 5;
 var_dump($arr);
 echo "<br>";
 //Практика 64.1
-$arr = [ ];
+$arr = [];
 echo '64.1: ';
 $arr['year'] = 2026;
 $arr['month'] = 1;
@@ -106,8 +107,8 @@ echo "<br>";
 $arr = [1, 2, 3, 4, 5];
 $key1 = 1;
 $key2 = 2;
-echo '65.1: '. ($arr[$key1] + $arr[$key1]) ."<br>";
+echo '65.1: ' . ($arr[$key1] + $arr[$key1]) . "<br>";
 //Практика 65.2
 $arr = ['a' => 1, 'b' => 2, 'c' => 3];
 $key = 'b';
-echo '65.2: '. $arr[$key] ."<br>";
+echo '65.2: ' . $arr[$key] . "<br>";
