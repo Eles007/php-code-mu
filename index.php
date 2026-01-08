@@ -14,6 +14,8 @@
     <li><a href="03_conditions/index.php">03.Условия</a></li>
     <li><a href="04_loop/index.php">04.Циклы</a></li>
     <li><a href="05_multidimensionality/index.php">05.Многомерность</a></li>
+    <li><a href="06_mathematical_functions/index.php">06.Математические функции</a></li>
+    <li><a href="07_string_functions/index.php">07.Строковые функции</a></li>
 </ul>
 
 </body>
