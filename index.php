@@ -16,6 +16,8 @@
     <li><a href="05_multidimensionality/index.php">05.Многомерность</a></li>
     <li><a href="06_mathematical_functions/index.php">06.Математические функции</a></li>
     <li><a href="07_string_functions/index.php">07.Строковые функции</a></li>
+    <li><a href="08_array_functions/index.php">08.Функции массивов</a></li>
+    <li><a href="09_random/index.php">09.Рандом</a></li>
 </ul>
 
 </body>
