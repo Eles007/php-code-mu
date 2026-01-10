@@ -6,18 +6,19 @@
 </head>
 <body>
 
-<h1>Практика</h1>
+<h1>Практика code.mu</h1>
 
 <ul>
-    <li><a href="01_basics/index.php">01.Основы</a></li>
-    <li><a href="02_arrays/index.php">02.Массивы</a></li>
-    <li><a href="03_conditions/index.php">03.Условия</a></li>
-    <li><a href="04_loop/index.php">04.Циклы</a></li>
-    <li><a href="05_multidimensionality/index.php">05.Многомерность</a></li>
-    <li><a href="06_mathematical_functions/index.php">06.Математические функции</a></li>
-    <li><a href="07_string_functions/index.php">07.Строковые функции</a></li>
-    <li><a href="08_array_functions/index.php">08.Функции массивов</a></li>
-    <li><a href="09_random/index.php">09.Рандом</a></li>
+    <li><a href="01_basics/">01.Основы</a></li>
+    <li><a href="02_arrays/">02.Массивы</a></li>
+    <li><a href="03_conditions/">03.Условия</a></li>
+    <li><a href="04_loop/">04.Циклы</a></li>
+    <li><a href="05_multidimensionality/">05.Многомерность</a></li>
+    <li><a href="06_mathematical_functions/">06.Математические функции</a></li>
+    <li><a href="07_string_functions/">07.Строковые функции</a></li>
+    <li><a href="08_array_functions/">08.Функции массивов</a></li>
+    <li><a href="09_random/">09.Рандом</a></li>
+    <li><a href="10_time/">10.Время</a></li>
 </ul>
 
 </body>
