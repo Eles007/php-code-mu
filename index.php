@@ -19,6 +19,7 @@
     <li><a href="08_array_functions/">08.Функции массивов</a></li>
     <li><a href="09_random/">09.Рандом</a></li>
     <li><a href="10_time/">10.Время</a></li>
+    <li><a href="11_user-defined%20functions/">11.Пользовательские функции</a></li>
 </ul>
 
 </body>
