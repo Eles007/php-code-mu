@@ -20,6 +20,8 @@
     <li><a href="09_random/">09.Рандом</a></li>
     <li><a href="10_time/">10.Время</a></li>
     <li><a href="11_user-defined%20functions/">11.Пользовательские функции</a></li>
+    <li><a href="12_recursion/">12.Рекурсия</a></li>
+    <li><a href="13_regex/">13.Регулярные выражения</a></li>
 </ul>
 
 </body>
