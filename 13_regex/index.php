@@ -202,3 +202,204 @@ $arr[] = 'my@addr@mail.ru'; // -
 foreach ($arr as $str) {
     echo $str . ' ' . preg_match($reg, $str) . '<br>';
 }
+//Практика 248.1
+echo '248.1: ';
+$str = '2025-12-31';
+$reg = '#(\d{4})-(\d{2})-(\d{2})#';
+preg_match($reg, $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 248.2
+echo '248.2: ';
+$str = 'index.html';
+$reg = '#([a-z0-9_-]+)\.([a-z]{4})#';
+preg_match($reg, $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 249
+echo '249: ';
+$str = '1 33 233 444';
+echo preg_match_all('#[0-9]+#', $str);
+echo "<br>";
+//Практика 250
+echo '250: ';
+$str = '2023-10-29 2024-11-30 2025-12-31';
+$reg = '#(\d{4})-(\d{2})-(\d{2})#';
+preg_match_all($reg, $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 251
+echo '251: ';
+$str = '2023-10-29 2024-11-30 2025-12-31';
+preg_match_all($reg, $str, $res, PREG_SET_ORDER);
+echo json_encode($res);
+echo "<br>";
+//Практика 252
+echo '252: ';
+$str = 'aaa$@bbb aaa$@$@bbb aaa$@$@$@bbb';
+preg_match_all('#([a-z]+)(?:\$@)+([a-z]+)#', $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 253.1
+echo '253.1: ';
+$str = '12 34 56 78';
+echo preg_replace('#(\d)(\d)#', '$2$1', $str);
+echo "<br>";
+//Практика 253.2
+echo '253.2: ';
+$str = '31.12.2025';
+echo preg_replace('#(\d\d)\.(\d\d)\.([0-9]{4})#', '$3.$2.$1', $str);
+echo "<br>";
+//Практика 254.1
+echo '254.1: ';
+$str = 'aaa bbb ccc xyz';
+echo preg_replace('#([a-z])\g1\g1#', '!', $str);
+echo "<br>";
+//Практика 254.2
+echo '254.2: ';
+$str = 'a aa aaa abab bbbb';
+echo preg_replace('#([a-z])\g1+#', '!', $str);
+echo "<br>";
+//Практика 254.3
+echo '254.3: ';
+$str = 'aaa aaa bbb bbb ccc ddd';
+echo preg_replace('#([a-z]+)\s\g1#', '!', $str);
+echo "<br>";
+//Практика 255.1
+echo '255.1: ';
+$str = '12:59:59';
+preg_match('#(?<hours>\d\d):(?<minutes>\d\d):(?<seconds>\d\d)#', $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 255.2
+echo '255.2: ';
+$str = '12:59:59';
+preg_match('#(?<hours>\d\d):(?<minutes>\d\d):(?<seconds>\d\d)#', $str, $res);
+function removeNumberedBuckets($array)
+{
+    foreach ($array as $key => $value) {
+        if (preg_match('#\d#', $key)) {
+            unset($array[$key]);
+        }
+    }
+    return $array;
+}
+
+echo json_encode(removeNumberedBuckets($res));
+echo "<br>";
+//Практика 256
+echo '256: ';
+$str = '12:59:59 12:59:12 09:45:09';
+echo preg_replace('#(?<hours>\d\d):(\d\d):\k<hours>#', '!', $str);
+echo "<br>";
+//Практика 257
+echo '257: ';
+$arr = [
+    '31-12-2025',
+    '30-11-1995',
+    '29-10-1990',
+];
+foreach ($arr as $key => $str) {
+    preg_match('#(\d\d)-(\d\d)-(?|19(\d\d)|20(\d\d))#', $str, $arr[$key]);
+}
+echo json_encode($arr);
+echo "<br>";
+//Практика 258.1
+echo '258.1: ';
+$str = 'func1() func2() func3()';
+preg_match_all('#[a-z]+[0-9](?=\(\))#', $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 258.2
+echo '258.2: ';
+$str = '<a href="" class="eee" id="zzz">';
+preg_match_all('#[a-z]+(?=")#', $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 259
+echo '259: ';
+$str = '$aaa $bbb $ccc';
+preg_match_all('#(?<=\$)[a-z]+#', $str, $res);
+echo json_encode($res);
+echo "<br>";
+//Практика 260.1
+echo '260.1: ';
+$str = 'The numbers are 3, 7 and 12';
+$res = preg_replace_callback('#(\d+)#', function ($matches) {
+    $matches[0] **= 2;
+    return $matches[0];
+}, $str);
+echo $res;
+echo "<br>";
+//Практика 260.2
+echo '260.2: ';
+$str = '2023-01-15 2022-12-31 2024-05-20';
+$res = preg_replace_callback('#(\d{4})-(\d\d)-(\d\d)#', function ($matches) {
+    return $matches[3] . "." . $matches[2] . "." . $matches[1];
+}, $str);
+echo $res;
+echo "<br>";
+//Практика 260.3
+echo '260.3: ';
+$str = 'Costs: $15, $20, $100';
+$res = preg_replace_callback('#((?<=\$)\d+)#', function ($matches) {
+    $matches[0] += $matches[0] * 0.1;
+    return $matches[0];
+}, $str);
+echo $res;
+echo "<br>";
+//Практика 268.1
+echo '268.1: ';
+$str = 'file.*.txt';
+echo preg_quote($str);
+echo "<br>";
+//Практика 268.2
+echo '268.2: ';
+$str = 'price+[10-20]';
+echo preg_quote($str);
+echo "<br>";
+//Практика 268.3
+echo '268.3: ';
+$str = 'user\name@domain.com';
+echo preg_quote($str);
+echo "<br>";
+//Практика 269.1
+echo '269.1: ';
+$array = ['apple', 'banana', 'cherry', 'date', 'fig'];
+echo json_encode(preg_grep('#^b#', $array));
+echo "<br>";
+//Практика 269.2
+echo '269.2: ';
+$arr = ['error404', 'success', 'warning', 'info', 'error500'];
+echo json_encode(preg_grep('#^error#', $arr));
+echo "<br>";
+//Практика 269.3
+echo '269.3: ';
+$arr = ['123', '45.6', '78', '9.0', 'text'];
+echo json_encode(preg_grep('#^\d+$#', $arr));
+echo "<br>";
+//Практика 269.4
+echo '269.4: ';
+$arr = [
+    'user1@example.com',
+    'invalid',
+    'user2@test.org',
+    'not-email'
+];
+echo json_encode(preg_grep('#[a-z-0-9_]+@[a-z]+\.[a-z]{3}#', $arr));
+echo "<br>";
+//Практика 270.1
+echo '270.1: ';
+$str = "apple,banana;cherry|date orange";
+echo json_encode(preg_split('#[,;|\s]#', $str));
+echo "<br>";
+//Практика 270.2
+echo '270.2: ';
+$str = '2025-12-31 12:30:45';
+echo json_encode(preg_split('#[-\s:]#', $str));
+echo "<br>";
+//Практика 270.3
+echo '270.3: ';
+$str = 'first.second.third.forth';
+echo json_encode(preg_split('#\.#', $str));
+echo "<br>";
