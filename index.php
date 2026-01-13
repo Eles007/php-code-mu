@@ -22,6 +22,8 @@
     <li><a href="11_user-defined%20functions/">11.Пользовательские функции</a></li>
     <li><a href="12_recursion/">12.Рекурсия</a></li>
     <li><a href="13_regex/">13.Регулярные выражения</a></li>
+    <li><a href="14_formation_of_lines/">14.Формирование строк</a></li>
+    <li><a href="15_forms/">15.Формы</a></li>
 </ul>
 
 </body>
