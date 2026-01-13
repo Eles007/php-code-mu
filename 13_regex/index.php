@@ -1,6 +1,6 @@
 <?php
 
-echo "<a href='../'><h1>Главная страница</h1></a>";
+echo "<a href=\"../\"><h1>Главная страница</h1></a>";
 
 //Практика 223.1
 $str = 'ahb acb aeb aeeb adcb axeb';

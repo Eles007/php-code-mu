@@ -1,6 +1,6 @@
 <?php
 
-echo "<a href='../'><h1>Главная страница</h1></a>";
+echo "<a href=\"../\"><h1>Главная страница</h1></a>";
 date_default_timezone_set("Europe/Samara");
 //Практика 182.1
 echo '182.1: ' . time() . "<br>";
