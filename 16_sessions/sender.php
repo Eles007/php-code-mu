@@ -5,7 +5,7 @@ session_start();
 
 echo "<a href=\"../\"><h1>Главная страница</h1></a>";
 
-echo "<a href=\"./receiver.php\"><h1>Receiver</h1></a>";
+echo "<a href=\"./receiver.php\"><h1>Страница</h1></a>";
 
 
 //319

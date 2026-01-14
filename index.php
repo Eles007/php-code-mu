@@ -25,7 +25,7 @@
     <li><a href="14_formation_of_lines/">14.Формирование строк</a></li>
     <li><a href="15_forms/">15.Формы</a></li>
     <li><a href="16_sessions/sender.php">16.Сессии</a></li>
-    <li><a href="17_сookies/">17.Cookies</a></li>
+    <li><a href="17_сookies/sender.php">17.Cookies</a></li>
 </ul>
 
 </body>
