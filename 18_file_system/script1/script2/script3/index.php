@@ -7,7 +7,7 @@ include 'file3.php';
 $path = __DIR__;
 $path = preg_replace('#script#', 'dir', $path);
 
-//echo "><h1>Главная страница</h1></a>";
+echo "<a href=\"../../../../\"><h1>Главная страница</h1></a>";
 
 /*$str1 = file_get_contents('1.txt');
 $str2 = file_get_contents('2.txt');
