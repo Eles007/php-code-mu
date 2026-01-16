@@ -28,6 +28,7 @@
     <li><a href="17_сookies/sender.php">17.Cookies</a></li>
     <li><a href="18_file_system/">18.Файловая система</a></li>
     <li><a href="19_database/">19.База данных</a></li>
+    <li><a href="20_database_organization/">20.Организация БД</a></li>
 </ul>
 
 </body>
