@@ -29,6 +29,7 @@
     <li><a href="18_file_system/">18.Файловая система</a></li>
     <li><a href="19_database/">19.База данных</a></li>
     <li><a href="20_database_organization/">20.Организация БД</a></li>
+    <li><a href="21_db_practice/">21.Практика БД</a></li>
 </ul>
 
 </body>
