@@ -32,6 +32,7 @@
     <li><a href="21_db_practice/">21.Практика БД</a></li>
     <li><a href="22_working_with_HTTP/">22.Работа с HTTP</a></li>
     <li><a href="23_redirects/">23.Редиректы</a></li>
+    <li><a href="24_authentication/login.php">24.Аутентификация</a></li>
 </ul>
 
 </body>
