@@ -6,28 +6,50 @@ session_start();
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>Главная</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>index</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php
-if (!empty($_SESSION['auth'])): ?>
-    <h2>Здравствуйте, <?= $_SESSION['login'] ?></h2>
-    <?php
-    if (isset($_SESSION['message'])) {
-        echo $_SESSION['message'];
-        unset($_SESSION['message']);
-    }
-; ?>
-    <a href="logout.php"><h4>Выйти</h4></a>
-<?php
-else: ?>
-    <h2><?php
-        if (!isset($_SESSION['auth'])) {
-            echo "Пользователь не авторизирован";
-        } ?></h2>
-    <a href="login.php"><h4>Авторизируйтесь</h4></a>
-<?php
-endif; ?>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+
+        <?php
+        if (!empty($_SESSION['auth'])): ?>
+
+            <h1>Здравствуйте, <?= htmlspecialchars($_SESSION['login']) ?> 👋</h1>
+
+            <?php
+            if (!empty($_SESSION['message'])): ?>
+                <div class="alert">
+                    <?= $_SESSION['message']; ?>
+                </div>
+                <?php
+                unset($_SESSION['message']); ?>
+            <?php
+            endif; ?>
+
+            <div class="auth-links">
+                <a href="logout.php">Выйти</a>
+            </div>
+
+        <?php
+        else: ?>
+
+            <h1>Доступ ограничен</h1>
+            <p style="text-align:center;">Пользователь не авторизован</p>
+
+            <div class="auth-links">
+                <a href="login.php">Авторизоваться</a>
+                <a href="register.php">Регистрация</a>
+            </div>
+
+        <?php
+        endif; ?>
+
+    </div>
+</div>
+
 </body>
 </html>

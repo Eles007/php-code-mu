@@ -4,54 +4,67 @@ session_start();
 /** @var mysqli $link */
 require_once 'config.php';
 
-$is_login_in = false;
-
-if (!empty($_POST['password']) and !empty($_POST['login'])) {
+if (!empty($_POST['login']) && !empty($_POST['password'])) {
     $login = $_POST['login'];
-    $password = $_POST['password'];
-
-    $query = "SELECT * FROM users WHERE login = '$login' AND password = '$password'";
+    $query = "SELECT * FROM users WHERE login = '$login'";
     $result = mysqli_query($link, $query);
     $user = mysqli_fetch_assoc($result);
-    $message = '';
 
-    if (!empty($user)) {
-        $_SESSION['message'] = "$_POST[login] is logged in.";
-        $is_login_in = true;
+    if ($user && password_verify($_POST['password'], $user['password'])) {
         $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;
+        $_SESSION['id'] = $user['id'];
         header('Location: index.php');
-        die();
+        exit;
     } else {
-        $_SESSION['message'] = "Invalid username or password.";
+        $_SESSION['message'] = 'Неправильный логин или пароль';
     }
 }
 ?>
-
-
 <!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>Вход</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Аутентификация</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a href="../index.php"><h1>Главная страница</h1></a>
-<?php
-if (!$is_login_in) : ?>
-    <form action="" method="post">
-        <input name="login">
-        <input name="password" type="password">
-        <input type="submit">
-    </form>
-<?php
-endif; ?>
-<h4><?php
-    if (isset($_SESSION['message'])) {
-        echo $_SESSION['message'];
-        unset($_SESSION['message']);
-    }; ?></h4>
-<a href="register.php"><h4>Регистрация</h4></a>
+
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h1>Вход</h1>
+
+        <?php
+        if (!empty($_SESSION['message'])): ?>
+            <div class="alert">
+                <?= $_SESSION['message']; ?>
+            </div>
+            <?php
+            unset($_SESSION['message']); ?>
+        <?php
+        endif; ?>
+
+        <form method="post">
+            <div class="form-group">
+                <label>Логин</label>
+                <input type="text" name="login" required>
+            </div>
+
+            <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit">Войти</button>
+        </form>
+
+        <div class="auth-links">
+            <a href="register.php">Регистрация</a>
+            <a href="../index.php">На главную</a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

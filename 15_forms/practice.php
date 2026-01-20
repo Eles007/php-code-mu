@@ -315,7 +315,7 @@ if (!empty($_GET)) {
                     12 => 'Декабрь'
             ];
             foreach ($months as $key => $value) {
-                $selectedMonth = ($i == $_GET['month-date-N10']) ? 'selected' : '';
+                $selectedMonth = ($key == $_GET['month-date-N10']) ? 'selected' : '';
                 echo "<option value='$key' $selectedMonth>$value</option>";
             } ?>
         </select>

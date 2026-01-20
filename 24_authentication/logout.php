@@ -1,6 +1,8 @@
 <?php
 
 session_start();
-$_SESSION['auth'] = null;
+session_unset();
+session_destroy();
+
 header('Location: index.php');
-die();
+exit;
