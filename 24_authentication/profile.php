@@ -24,7 +24,8 @@ if (!empty($_SESSION['auth']) && $user):
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-
+    <?php
+    include 'header.php'; ?>
     <div class="auth-wrapper">
         <div class="auth-card">
 

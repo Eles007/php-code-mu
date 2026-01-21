@@ -26,6 +26,8 @@ if (!empty($_POST['submit'])) {
     <title>Account</title>
 </head>
 <body>
+<?php
+include 'header.php'; ?>
 <form method="post">
     <input name="name" value="<?= $user['name'] ?>">
     <input name="surname" value="<?= $user['surname'] ?>">

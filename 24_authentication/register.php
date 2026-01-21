@@ -50,12 +50,14 @@ if (!empty($_POST)) {
                                 name = '$name',
                                 surname = '$surname',
                                 patronymic = '$patronymic',
-                                registration_date = '$registration_date'
+                                registration_date = '$registration_date',
+                                status = 1
                             ";
                             mysqli_query($link, $query);
 
                             $_SESSION['auth'] = true;
                             $_SESSION['login'] = $login;
+                            $_SESSION['status'] = 'user';
                             $_SESSION['id'] = mysqli_insert_id($link);
 
                             header('Location: profile.php?id=' . mysqli_insert_id($link));
@@ -90,7 +92,8 @@ if (!empty($_POST)) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<?php
+include 'header.php'; ?>
 <div class="auth-wrapper">
     <div class="auth-card">
         <h1>Регистрация</h1>

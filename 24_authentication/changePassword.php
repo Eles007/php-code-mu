@@ -41,6 +41,8 @@ if (!empty($_POST['old_password']) && !empty($_POST['new_password']) && !empty($
     <title>Смена пароля</title>
 </head>
 <body>
+<?php
+include 'header.php'; ?>
 <form method="post">
     <h3>Логин <?= $_SESSION['login'] ?? '' ?></h3>
     Старый пароль <input type="password" name="old_password"><br>

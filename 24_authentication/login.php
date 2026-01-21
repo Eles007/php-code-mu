@@ -6,7 +6,13 @@ require_once 'config.php';
 
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
     $login = $_POST['login'];
-    $query = "SELECT * FROM users WHERE login = '$login'";
+    $query = "SELECT 
+                users.*, 
+                statuses.name as status 
+              FROM users 
+              LEFT JOIN statuses ON users.status_id = statuses.id 
+              WHERE login = '$login'
+    ";
     $result = mysqli_query($link, $query);
     $user = mysqli_fetch_assoc($result);
 
@@ -14,6 +20,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
         $_SESSION['auth'] = true;
         $_SESSION['login'] = $login;
         $_SESSION['id'] = $user['id'];
+        $_SESSION['status'] = $user['status'];
         header('Location: index.php');
         exit;
     } else {
@@ -30,7 +37,8 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<?php
+include 'header.php'; ?>
 <div class="auth-wrapper">
     <div class="auth-card">
         <h1>Вход</h1>
@@ -65,6 +73,5 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
         </div>
     </div>
 </div>
-
 </body>
 </html>

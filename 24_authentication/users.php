@@ -21,7 +21,8 @@ $result = mysqli_query($link, $query);
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<?php
+include 'header.php'; ?>
 <div class="auth-wrapper">
     <div class="auth-card auth-card--wide">
 

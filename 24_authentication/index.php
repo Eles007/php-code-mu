@@ -11,7 +11,8 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<?php
+include 'header.php'; ?>
 <div class="auth-wrapper">
     <div class="auth-card">
 
@@ -50,6 +51,5 @@ session_start();
 
     </div>
 </div>
-
 </body>
 </html>

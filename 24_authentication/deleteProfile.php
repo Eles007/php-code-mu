@@ -24,9 +24,7 @@ if (!empty($_POST['password'])) {
         $message = "Пароль введен не верно!";
     }
 }
-
 ?>
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -35,6 +33,8 @@ if (!empty($_POST['password'])) {
     <title>Удаление пользователя</title>
 </head>
 <body>
+<?php
+include 'header.php'; ?>
 <form method="post">
     <h2>Вы точно хотите удалить пользователя?</h2>
     <h3><?= $_SESSION['login'] ?></h3>
