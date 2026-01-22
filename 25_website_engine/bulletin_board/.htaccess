@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /php-code-mu/25_website_engine/bulletin_board/
+RewriteCond %{REQUEST_URI} !\.(js|css|ico|jpg|png|gif)$
+RewriteRule .+ index.php
