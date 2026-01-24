@@ -6,16 +6,22 @@
 </head>
 <body>
 <header>
-    <a href="./">Главная</a> |
-    <a href="./topics">Темы</a> |
+    <a href="<?= $basePath ?>/">Главная</a> |
+    <a href="<?= $basePath ?>/topics">Темы</a> |
+    <?php
+    if (isset($_SESSION['auth']) && $_SESSION['role'] === 'admin'):
+        ?>
+        <a href="<?= $basePath ?>/admin"> Админка </a>
+    <?php
+    endif; ?>
     <?php
     if (!empty($_SESSION['auth'])) : ?>
-        <a href="./logout"> Выйти </a>
+        <a href="<?= $basePath ?>/logout"> Выйти </a>
         Здравствуйте, <?= $_SESSION['login'] ?> Доступ:<?= $_SESSION['role'] ?>
     <?php
     else : ?>
-        <a href="./register"> Регистрация</a> |
-        <a href="./login"> Вход</a>
+        <a href="<?= $basePath ?>/register"> Регистрация</a> |
+        <a href="<?= $basePath ?>/login"> Вход</a>
     <?php
     endif; ?>
 </header>
