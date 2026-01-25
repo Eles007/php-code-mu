@@ -16,6 +16,7 @@
     endif; ?>
     <?php
     if (!empty($_SESSION['auth'])) : ?>
+        <a href="<?= $basePath ?>/list"> Список пользователей </a>
         <a href="<?= $basePath ?>/logout"> Выйти </a>
         Здравствуйте, <?= $_SESSION['login'] ?> Доступ:<?= $_SESSION['role'] ?>
     <?php

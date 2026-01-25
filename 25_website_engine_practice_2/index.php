@@ -19,6 +19,12 @@ if ($path === '/register') {
     $page = include 'pages/show.php';
 } elseif ($path === '/admin') {
     $page = include 'pages/admin.php';
+} elseif ($path === '/list') {
+    $page = include 'pages/list.php';
+} elseif ($path === '/deleteTopic') {
+    $page = include 'pages/deleteTopic.php';
+} elseif ($path === '/ban') {
+    $page = include 'pages/ban.php';
 } elseif ($path === '/') {
     $page = include 'pages/home.php';
 } else {

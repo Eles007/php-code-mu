@@ -6,6 +6,8 @@ require 'config/db.php';
 if (!isset($_SESSION['auth'])) {
     header('Location: ./login');
     exit;
+} elseif (isset($_SESSION['status']) && $_SESSION['status'] === '1') {
+    header('Location: ' . $basePath . '/ban');
 }
 
 if (!empty($_POST['topic'])) {
@@ -38,8 +40,12 @@ if ($countTopics > 0) {
     foreach ($topics as $topic) {
         $title = str_replace(' ', '_', $topic['title']);
         $content .= "<li><a href='./topics/$title'><h4> $topic[title] </h4></a>";
-        if ($_SESSION['role'] === 'admin' | $_SESSION['role'] === 'moderator') {
-            $content .= "<a href='{$basePath}/deleteTopic'> Удалить </a></li>";
+        if ($_SESSION['role'] !== 'user') {
+            $content .= "
+                <form action='deleteTopic' method='POST'>
+                    <input type='hidden' name='topic_id' value='$topic[id]'>
+                    <button type='submit'>Удалить</button>
+                </form>";
         } else {
             $content .= '</li>';
         }

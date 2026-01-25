@@ -13,17 +13,26 @@ if ($_SESSION['role'] != 'admin') {
         for ($data = []; $user = mysqli_fetch_assoc($res); $data[] = $user) {
         }
 
-        if (!empty($_POST['changeRole']) && !empty($_POST['user_id'])) {
+        if (!empty($_POST['user_id'])) {
             $user_id = $_POST['user_id'];
-            if ($_POST['changeRole'] == 'user') {
-                $role = 'moderator';
-            } else {
-                $role = 'user';
+            if (!empty($_POST['changeRole'])) {
+                if ($_POST['changeRole'] == 'user') {
+                    $role = 'moderator';
+                } else {
+                    $role = 'user';
+                }
+
+                $query = "UPDATE users SET role ='$role' WHERE id ='$user_id'";
+            } elseif (isset($_POST['ban'])) {
+                if ($_POST['ban'] == '0') {
+                    $status = 1;
+                } else {
+                    $status = 0;
+                }
+                $query = "UPDATE users SET status ='$status' WHERE id ='$user_id'";
             }
 
-            $query = "UPDATE users SET role ='$role' WHERE id ='$user_id'";
-            mysqli_query($link, $query);
-            $message = "Роль успешно изменена!";
+            mysqli_query($link, $query) or die(mysqli_error($link));
             header('Location: ' . $basePath . '/admin');
             exit;
         }
@@ -45,12 +54,17 @@ if ($_SESSION['role'] != 'admin') {
             } else {
                 $content .= "<form method='post'>
                     <input type='hidden' name='user_id' value='$user[id]'>
-                    <button type='submit' name='changeRole' value='$user[role]'>$user[role]</button>
+                    <input type='hidden' name='changeRole' value='$user[role]'>
+                    <button type='submit'>$user[role]</button>
+                    </form></td>
+                    <td><form method='POST'>
+                    <input type='hidden' name='user_id' value='$user[id]'>
+                    <input type='hidden' name='ban' value='$user[status]'>
+                    <button type='submit'>" . ($user['status'] === '0' ? 'Забанить' : 'Разбанить') . "</button>
                     </form>";
             }
             $content .= "</td>
-                    <td>$user[status]</td>
-            </tr>";
+                        </tr>";
         }
         $content .= '</table>
                      <h3> ' . ($message ?? '') . '</h3>';

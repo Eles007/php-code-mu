@@ -11,9 +11,11 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
 
     if (password_verify($password, $user['password'])) {
         if (!empty($user)) {
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['login'] = $user['login'];
             $_SESSION['auth'] = true;
             $_SESSION['role'] = $user['role'];
+            $_SESSION['status'] = $user['status'];
             $message = 'Вы успешно зашли';
             header('Location: ./');
             exit;

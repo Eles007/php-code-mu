@@ -34,7 +34,7 @@ if (
             $_SESSION['login'] = $login;
             $_SESSION['role'] = $role;
             $_SESSION['auth'] = true;
-
+            $_SESSION['user_id'] = $user['id'];
             $message = 'Успешно зарегистрировался';
             header('Location: ./');
             exit;
