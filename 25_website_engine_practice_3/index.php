@@ -21,7 +21,11 @@ if ($path === '/register') {
     $page = include 'pages/chat.php';
 } elseif ($path === '/wall') {
     $page = include 'pages/wall.php';
-}else {
+} elseif ($path === '/logout') {
+    $page = include 'pages/logout.php';
+} elseif ($path === '/') {
+    $page = include 'pages/home.php';
+} else {
     http_response_code(404);
     $page = include 'pages/404.php';
 }

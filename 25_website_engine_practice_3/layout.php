@@ -9,14 +9,22 @@
 
 <header class="header">
     <div class="header-inner">
-        <div class="logo">МояСеть</div>
+        <div class="logo"><a href="<?= $basePath ?>/">МояСеть</a></div>
 
         <nav class="menu">
-            <a href="/profile">Профиль</a>
-            <a href="/friends">Друзья</a>
-            <a href="/messages">Сообщения</a>
-            <a href="/wall">Стена</a>
-            <a href="/logout" class="logout">Выйти</a>
+            <a href="<?= $basePath ?>/profile">Профиль</a>
+            <a href="<?= $basePath ?>/friends">Друзья</a>
+            <a href="<?= $basePath ?>/messages">Сообщения</a>
+            <a href="<?= $basePath ?>/wall">Стена</a>
+            <?php
+            if (isset($_SESSION['auth'])): ?>
+                <a href="<?= $basePath ?>/logout" class="logout">Выйти</a>
+            <?php
+            else: ?>
+                <a href="<?= $basePath ?>/register">Регистрация</a>
+                <a href="<?= $basePath ?>/login">Войти</a>
+            <?php
+            endif; ?>
         </nav>
     </div>
 </header>

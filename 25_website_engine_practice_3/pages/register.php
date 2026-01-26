@@ -3,58 +3,58 @@
 require 'config/db.php';
 /**@var mysqli $link */
 
-/*if (
-    !empty($_POST['login']) &&
-    !empty($_POST['name']) &&
-    !empty($_POST['password']) &&
-    !empty($_POST['confirm_password'])
+if (
+    !empty($_POST['register_email']) &&
+    !empty($_POST['register_password']) &&
+    !empty($_POST['register_password_confirm']) &&
+    !empty($_POST['register_name']) &&
+    !empty($_POST['register_surname'])
 ) {
-    $query = 'SELECT COUNT(*) FROM users';
-    $countRecord = mysqli_fetch_column(mysqli_query($link, $query));
-    if ($countRecord == 0) {
-        $role = 'admin';
-    } else {
-        $role = 'user';
-    }
-
-    $login = $_POST['login'];
-    $name = $_POST['name'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    if ($password == $confirm_password) {
-        $query = "SELECT * FROM users WHERE login = '$login'";
+    $email = $_POST['register_email'];
+    $password = $_POST['register_password'];
+    $password_confirm = $_POST['register_password_confirm'];
+    $name = $_POST['register_name'];
+    $surname = $_POST['register_surname'];
+    if ($password == $password_confirm) {
+        $query = "SELECT * FROM users WHERE email = '$email'";
         $user = mysqli_fetch_assoc(mysqli_query($link, $query));
         if (empty($user)) {
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
-            $query = "INSERT 
-                      INTO users (login, name, password, role, status) 
-                      VALUES ('$login', '$name', '$password_hash', '$role', 0)";
-            mysqli_query($link, $query);
+            mysqli_query(
+                $link,
+                "INSERT 
+                      INTO users (email	, password, created_at) 
+                      VALUES ('$email', '$password_hash', NOW())"
+            );
+            mysqli_query(
+                $link,
+                "INSERT 
+                      INTO profiles (user_id, name, surname) 
+                      VALUES (LAST_INSERT_ID(), '$name', '$surname')"
+            );
 
-            $_SESSION['login'] = $login;
-            $_SESSION['role'] = $role;
             $_SESSION['auth'] = true;
-            $_SESSION['user_id'] = $user['id'];
             $message = 'Успешно зарегистрировался';
-            header('Location: ./');
+            header('Location: ' . $basePath . '/profile');
             exit;
         } else {
-            $message = 'Логин занят';
+            $message = 'Email занят';
         }
     } else {
         $message = "Повторите пароль";
     }
 } else {
     $message = 'Заполните формы!';
-}*/
+}
 
 $content = "<h1>Регистрация</h1>
 <form method=\"post\">
-    <input type=\"email\" placeholder=\"Email\">
-    <input type=\"password\" placeholder=\"Пароль\">
-    <input type=\"text\" placeholder=\"Имя\">
-    <input type=\"text\" placeholder=\"Фамилия\">
-    <button>Зарегистрироваться</button>
+    <input type=\"email\" placeholder=\"Email\" name=\"register_email\" />
+    <input type=\"password\" placeholder=\"Пароль\" name=\"register_password\" />
+    <input type=\"password\" placeholder=\"Повторите пароль\" name=\"register_password_confirm\" />
+    <input type=\"text\" placeholder=\"Имя\" name=\"register_name\" />
+    <input type=\"text\" placeholder=\"Фамилия\" name=\"register_surname\" />
+    <button type='submit'>Зарегистрироваться</button>
 </form>
 <h3>" . ($message ?? '') . "</h3>";
 

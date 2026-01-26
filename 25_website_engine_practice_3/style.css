@@ -73,15 +73,36 @@ h1, h2 {
 }
 
 /* profile */
+.profile-form {
+    flex: 1;
+}
+
+.profile-form label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.profile-form input,
+.profile-form textarea {
+    margin-top: 5px;
+}
+
 .profile-header {
     display: flex;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.avatar-wrapper {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0; /* Не даём flex уменьшать */
 }
 
 .avatar {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background: #e5e7eb;
 }
@@ -156,4 +177,34 @@ h1, h2 {
     padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
+}
+
+/*home*/
+.home {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.home-text {
+    margin: 20px 0;
+    color: #4b5563;
+    font-size: 18px;
+}
+
+.home-actions {
+    margin-top: 25px;
+}
+
+.home-btn {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 20px;
+    background: #4f46e5;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.home-btn.secondary {
+    background: #6b7280;
 }
