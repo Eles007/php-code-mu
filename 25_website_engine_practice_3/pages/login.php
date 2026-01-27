@@ -3,21 +3,18 @@
 /**@var mysqli $link */
 require 'config/db.php';
 
-/*if (!empty($_POST['login']) && !empty($_POST['password'])) {
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $password = $_POST['password'];
-    $login = $_POST['login'];
-    $query = "SELECT * FROM users WHERE login = '$login'";
+    $email = $_POST['email'];
+    $query = "SELECT * FROM users WHERE email = '$email'";
     $user = mysqli_fetch_assoc(mysqli_query($link, $query));
 
     if (password_verify($password, $user['password'])) {
         if (!empty($user)) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['login'] = $user['login'];
             $_SESSION['auth'] = true;
-            $_SESSION['role'] = $user['role'];
-            $_SESSION['status'] = $user['status'];
+            $_SESSION['user_id'] = $user['id'];
             $message = 'Вы успешно зашли';
-            header('Location: ./');
+            header('Location:' . $basePath);
             exit;
         } else {
             $message = "Неправильный логин или пароль!";
@@ -27,13 +24,13 @@ require 'config/db.php';
     }
 } else {
     $message = 'Заполните форму';
-}*/
+}
 
 $content = "<h1>Вход</h1>
-<form>
-    <input type=\"email\" placeholder=\"Email\">
-    <input type=\"password\" placeholder=\"Пароль\">
-    <button>Войти</button>
+<form method='post'>
+    <input type=\"email\" placeholder=\"Email\" name=\"email\">
+    <input type=\"password\" placeholder=\"Пароль\" name=\"password\">
+    <button type='submit'>Войти</button>
 </form>
 <h3>" . ($message ?? '') . "</h3>";
 

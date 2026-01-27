@@ -3,54 +3,82 @@
 require 'config/db.php';
 /**@var mysqli $link */
 
-if (
-    !empty($_POST['register_email']) &&
-    !empty($_POST['register_password']) &&
-    !empty($_POST['register_password_confirm']) &&
-    !empty($_POST['register_name']) &&
-    !empty($_POST['register_surname'])
-) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (
+        !empty($_POST['profile_name']) &&
+        !empty($_POST['profile_surname']) &&
+        !empty($_POST['profile_city']) &&
+        !empty($_POST['profile_birthdate']) &&
+        !empty($_POST['bio'])
+    ) {
+        $name = $_POST['profile_name'];
+        $surname = $_POST['profile_surname'];
+        $bio = $_POST['bio'];
+        $city = $_POST['profile_city'];
+        $birthdate = $_POST['profile_birthdate'];
 
-} else {
-    $message = 'Заполните формы!';
+        $query = "UPDATE profiles 
+              SET name='$name', surname='$surname', bio='$bio', city='$city', birth_date='$birthdate'
+              WHERE user_id='$_SESSION[user_id]'";
+
+        mysqli_query($link, $query);
+        header('Location: ' . $basePath . '/profile');
+        exit;
+    } else {
+        $message = 'Заполните формы!';
+    }
 }
 
-$content = "<h1>Мой профиль</h1>
+$user = mysqli_fetch_assoc(
+    mysqli_query(
+        $link,
+        "SELECT * 
+          FROM users
+          LEFT JOIN profiles ON profiles.user_id = users.id
+          WHERE id ='$_SESSION[user_id]'"
+    )
+);
 
+
+$content = "<h1>Мой профиль</h1>
 <div class=\"profile-header\">
     <div class=\"avatar-wrapper\">
-        <div class=\"avatar\"></div>
+        <div class=\"avatar\">
+            <img src=\"pages/pug.jpg\"> 
+        </div>
     </div>
 
-    <form class=\"profile-form\">
+    <form class=\"profile-form\" method=\"post\">
         <label>
             Имя
-            <input type=\"text\" value=\"Иван\">
+            <input type=\"text\" value=\"" . $user['name'] . "\" name=\"profile_name\"/>
         </label>
 
         <label>
             Фамилия
-            <input type=\"text\" value=\"Иванов\" name=\"profile_name\" />
+            <input type=\"text\" value=\"" . $user['surname'] . "\" name=\"profile_surname\"/>
         </label>
 
         <label>
             Город
-            <input type=\"text\" value=\"Казань\" name=\"profile_city\" />
+            <input type=\"text\" value=\"" . ($user['city'] ?? '') . "\" name=\"profile_city\" />
         </label>
 
         <label>
             Дата рождения
-            <input type=\"date\" value=\"2000-01-01\" name=\"profile_birthday\" />
+            <input type=\"date\" value=\"" . ($user['birth_date'] ?? '') . "\" name=\"profile_birthdate\" />
         </label>
 
         <label>
             О себе
-            <textarea name=\"\">Люблю программирование и спорт</textarea>
+            <textarea name=\"bio\">" . ($user['bio'] ?? '') . "</textarea>
         </label>
 
-        <button>Сохранить изменения</button>
+        <button type='submit'>Сохранить изменения</button>
     </form>
-</div>";
+</div>
+<h2 align='center'>" . ($message ?? '') . "</h2>
+";
 return $page = [
     'title' => 'Профиль',
     'content' => $content,

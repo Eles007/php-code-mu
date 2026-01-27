@@ -32,7 +32,7 @@ if (
                       INTO profiles (user_id, name, surname) 
                       VALUES (LAST_INSERT_ID(), '$name', '$surname')"
             );
-
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['auth'] = true;
             $message = 'Успешно зарегистрировался';
             header('Location: ' . $basePath . '/profile');

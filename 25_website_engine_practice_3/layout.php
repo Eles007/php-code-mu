@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header class="header">
     <div class="header-inner">
         <div class="logo"><a href="<?= $basePath ?>/">МояСеть</a></div>
