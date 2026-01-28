@@ -17,7 +17,7 @@ if ($path === '/register') {
     $page = include 'pages/friends.php';
 } elseif ($path === '/messages') {
     $page = include 'pages/messages.php';
-} elseif ($path === '/chat') {
+} elseif ($path === '/chat' && isset($_GET['id'])) {
     $page = include 'pages/chat.php';
 } elseif ($path === '/wall') {
     $page = include 'pages/wall.php';

@@ -1,11 +1,27 @@
 <?php
 
+require 'config/db.php';
+/**@var mysqli $link */
+
+if (!isset($_SESSION['auth'])) {
+    header('Location:' . $basePath . '/login');
+    exit;
+}
+
+if (isset($_GET)) {
+    $user_id = $_GET['user_id'];
+} else {
+    $user_id = $_SESSION['user_id'];
+}
+
+if (isset($_POST['add_post'])) {
+}
 
 $content = "<h1>Стена</h1>
-
-<form>
-    <textarea placeholder=\"Что у вас нового?\"></textarea>
-    <button>Опубликовать</button>
+<form method='post'>
+    <textarea name='content' placeholder=\"Что у вас нового?\"></textarea>
+    <input type='hidden' name='wall_id' value='$user_id'>
+    <button type='submit' name='add_post'>Опубликовать</button>
 </form>
 
 <div class=\"post\">

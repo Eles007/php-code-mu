@@ -3,6 +3,12 @@
 require 'config/db.php';
 /**@var mysqli $link */
 
+if (!isset($_SESSION['auth'])) {
+    header('Location:' . $basePath . '/login');
+    exit;
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (
         !empty($_POST['profile_name']) &&
@@ -32,13 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $user = mysqli_fetch_assoc(
     mysqli_query(
         $link,
-        "SELECT * 
+        "SELECT users.id as user_id, profiles.name, profiles.surname, profiles.city, profiles.birth_date, profiles.bio
           FROM users
           LEFT JOIN profiles ON profiles.user_id = users.id
-          WHERE id ='$_SESSION[user_id]'"
+          WHERE user_id ='$_SESSION[user_id]'"
     )
 );
-
 
 $content = "<h1>Мой профиль</h1>
 <div class=\"profile-header\">

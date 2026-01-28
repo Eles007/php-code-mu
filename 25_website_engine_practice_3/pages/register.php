@@ -26,13 +26,16 @@ if (
                       INTO users (email	, password, created_at) 
                       VALUES ('$email', '$password_hash', NOW())"
             );
+
+            $user_id = mysqli_insert_id($link);
+
             mysqli_query(
                 $link,
                 "INSERT 
                       INTO profiles (user_id, name, surname) 
-                      VALUES (LAST_INSERT_ID(), '$name', '$surname')"
+                      VALUES ('$user_id', '$name', '$surname')"
             );
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_id'] = $user_id;
             $_SESSION['auth'] = true;
             $message = 'Успешно зарегистрировался';
             header('Location: ' . $basePath . '/profile');
