@@ -83,7 +83,7 @@ foreach ($data as $friend) {
     $content .= "
         <form method='post'>
             <div class=\"friend\">
-                <span>$friend[name] $friend[surname]</span>
+                <a href='$basePath/wall?id=$friend[id]'>$friend[name] $friend[surname]</a>
                 <input hidden='hidden' name='friend_id' value='$friend[id]'>
                 $button
             </div>
